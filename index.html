@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AMS — Frequently Asked Questions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy-900: #050e1f;
+    --navy-800: #0a1931;
+    --navy-700: #0f2547;
+    --navy-600: #163260;
+    --navy-500: #1e4080;
+    --navy-400: #2a56a6;
+    --navy-300: #3a72cc;
+    --navy-200: #6a9ee0;
+    --navy-100: #b0caee;
+    --navy-50:  #ddeaf8;
+    --gold:     #c9a84c;
+    --gold-lt:  #e5c97a;
+    --white:    #f4f8ff;
+    --muted:    #8aa5c8;
+    --danger:   #c0392b;
+    --success:  #1a7a4a;
+    --border:   rgba(58, 114, 204, 0.22);
+    --card-bg:  rgba(10, 25, 49, 0.85);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--navy-900);
+    color: var(--white);
+    font-family: 'IBM Plex Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Background grid ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(42,86,166,0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,86,166,0.07) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── Glow blob ── */
+  body::after {
+    content: '';
+    position: fixed;
+    top: -200px; left: 50%; transform: translateX(-50%);
+    width: 900px; height: 600px;
+    background: radial-gradient(ellipse, rgba(30,64,128,0.45) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-wrap {
+    position: relative; z-index: 1;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 56px 24px 80px;
+  }
+
+  /* ── Header ── */
+  header {
+    text-align: center;
+    margin-bottom: 52px;
+    animation: fadeDown 0.6s ease both;
+  }
+
+  .logo-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+
+  .logo-mark {
+    width: 44px; height: 44px;
+    background: linear-gradient(135deg, var(--navy-400), var(--navy-300));
+    border: 2px solid var(--gold);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+  }
+
+  .company-name {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.9rem, 4vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    background: linear-gradient(135deg, var(--white) 30%, var(--navy-200));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+  }
+
+  header p {
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+  }
+
+  .gold-rule {
+    width: 64px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 18px auto 0;
+  }
+
+  /* ── Toolbar ── */
+  .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+    animation: fadeDown 0.6s 0.1s ease both;
+  }
+
+  .search-wrap {
+    position: relative;
+    flex: 1; min-width: 200px; max-width: 340px;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px 10px 38px;
+    color: var(--white);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.88rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .search-wrap input::placeholder { color: var(--muted); }
+  .search-wrap input:focus { border-color: var(--navy-300); }
+
+  .search-icon {
+    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    color: var(--muted); font-size: 0.9rem; pointer-events: none;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 9px 18px;
+    border-radius: 8px;
+    border: none; cursor: pointer;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    transition: all 0.18s;
+    white-space: nowrap;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--navy-400), var(--navy-300));
+    color: var(--white);
+    border: 1px solid rgba(58,114,204,0.5);
+  }
+  .btn-primary:hover { background: linear-gradient(135deg, var(--navy-300), var(--navy-200)); transform: translateY(-1px); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .btn-ghost:hover { color: var(--white); border-color: var(--navy-300); }
+
+  .btn-danger {
+    background: rgba(192,57,43,0.15);
+    color: #e57a6e;
+    border: 1px solid rgba(192,57,43,0.3);
+  }
+  .btn-danger:hover { background: rgba(192,57,43,0.25); }
+
+  .btn-success {
+    background: rgba(26,122,74,0.2);
+    color: #4dcf8a;
+    border: 1px solid rgba(26,122,74,0.4);
+  }
+  .btn-success:hover { background: rgba(26,122,74,0.3); }
+
+  .edit-status {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+
+  .status-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--muted);
+    transition: background 0.3s;
+  }
+  .status-dot.active { background: #4dcf8a; box-shadow: 0 0 6px #4dcf8a88; }
+
+  /* ── Category filter ── */
+  .cat-bar {
+    display: flex; flex-wrap: wrap; gap: 8px;
+    margin-bottom: 32px;
+    animation: fadeDown 0.6s 0.15s ease both;
+  }
+
+  .cat-pill {
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-family: 'IBM Plex Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.18s;
+    letter-spacing: 0.03em;
+  }
+  .cat-pill:hover, .cat-pill.active {
+    background: var(--navy-500);
+    color: var(--white);
+    border-color: var(--navy-300);
+  }
+
+  /* ── FAQ Items ── */
+  #faq-list { display: flex; flex-direction: column; gap: 10px; }
+
+  .faq-item {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    animation: fadeUp 0.4s ease both;
+  }
+  .faq-item:hover { border-color: rgba(58,114,204,0.45); box-shadow: 0 4px 24px rgba(10,25,49,0.6); }
+
+  .faq-item.hidden { display: none; }
+
+  .faq-q {
+    width: 100%;
+    display: flex; align-items: center;
+    gap: 14px;
+    padding: 18px 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    color: var(--white);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.97rem;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .faq-q:hover { background: rgba(42,86,166,0.08); }
+
+  .q-icon {
+    flex-shrink: 0;
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: rgba(42,86,166,0.2);
+    border: 1px solid rgba(42,86,166,0.35);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.75rem;
+    color: var(--navy-200);
+    font-weight: 600;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .q-text { flex: 1; }
+
+  .q-cat {
+    font-size: 0.68rem;
+    padding: 2px 9px;
+    border-radius: 20px;
+    background: rgba(42,86,166,0.18);
+    color: var(--navy-200);
+    border: 1px solid rgba(42,86,166,0.3);
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .chevron {
+    flex-shrink: 0;
+    width: 20px; height: 20px;
+    color: var(--muted);
+    transition: transform 0.28s ease;
+  }
+  .faq-item.open .chevron { transform: rotate(180deg); }
+
+  .faq-a {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease, padding 0.3s ease;
+  }
+  .faq-item.open .faq-a { max-height: 800px; }
+
+  .faq-a-inner {
+    padding: 0 20px 20px 62px;
+    color: #a8c4e0;
+    font-size: 0.9rem;
+    font-weight: 300;
+    line-height: 1.75;
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+  }
+
+  .faq-a-inner pre {
+    background: rgba(5,14,31,0.7);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 0.82rem;
+    overflow-x: auto;
+    margin-top: 10px;
+    color: var(--navy-100);
+  }
+
+  /* Edit mode overlay on items */
+  .faq-item.edit-mode { border-color: rgba(201,168,76,0.35); }
+  .item-edit-bar {
+    display: none;
+    gap: 8px;
+    padding: 10px 20px;
+    background: rgba(5,14,31,0.5);
+    border-top: 1px solid var(--border);
+  }
+  .faq-item.edit-mode .item-edit-bar { display: flex; }
+
+  /* ── No results ── */
+  #no-results {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+  }
+  #no-results svg { margin-bottom: 16px; opacity: 0.4; }
+  #no-results p { font-size: 0.9rem; }
+
+  /* ── Count badge ── */
+  .count-badge {
+    font-size: 0.75rem;
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    margin-bottom: 14px;
+    animation: fadeDown 0.5s 0.2s ease both;
+  }
+
+  /* ── Modal ── */
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(5,14,31,0.88);
+    backdrop-filter: blur(6px);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.active { display: flex; animation: fadeIn 0.2s ease; }
+
+  .modal {
+    background: var(--navy-800);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    width: 100%; max-width: 500px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+    position: relative;
+  }
+
+  .modal h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem;
+    margin-bottom: 6px;
+    color: var(--white);
+  }
+
+  .modal p {
+    color: var(--muted);
+    font-size: 0.87rem;
+    margin-bottom: 22px;
+    font-weight: 300;
+  }
+
+  .modal label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 7px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  .modal input, .modal textarea, .modal select {
+    width: 100%;
+    background: rgba(5,14,31,0.6);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: var(--white);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    margin-bottom: 16px;
+    transition: border-color 0.2s;
+  }
+  .modal input:focus, .modal textarea:focus, .modal select:focus { border-color: var(--navy-300); }
+  .modal textarea { resize: vertical; min-height: 90px; }
+  .modal select option { background: var(--navy-800); }
+
+  .modal-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 8px; }
+
+  .modal-close {
+    position: absolute; top: 16px; right: 16px;
+    background: transparent; border: none; cursor: pointer;
+    color: var(--muted); font-size: 1.2rem; line-height: 1;
+  }
+  .modal-close:hover { color: var(--white); }
+
+  .error-msg {
+    color: #e57a6e;
+    font-size: 0.82rem;
+    margin-top: -10px;
+    margin-bottom: 12px;
+    display: none;
+  }
+  .error-msg.show { display: block; }
+
+  /* ── Animations ── */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  /* ── Footer ── */
+  footer {
+    margin-top: 60px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgba(138,165,200,0.4);
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.06em;
+    animation: fadeUp 0.5s 0.4s ease both;
+  }
+
+  /* ── Responsive ── */
+  @media(max-width: 560px) {
+    .toolbar { flex-direction: column; align-items: stretch; }
+    .search-wrap { max-width: 100%; }
+    .faq-a-inner { padding-left: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- Header -->
+  <header>
+    <div class="logo-bar">
+      <div class="logo-mark">AMS</div>
+      <span class="company-name">Advanced Material Solutions</span>
+    </div>
+    <h1>Frequently Asked Questions</h1>
+    <p>Engineering &amp; Process Reference — Missoula, MT</p>
+    <div class="gold-rule"></div>
+  </header>
+
+  <!-- Toolbar -->
+  <div class="toolbar">
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="search-input" placeholder="Search questions…" oninput="filterFAQ()">
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <div class="edit-status">
+        <div class="status-dot" id="status-dot"></div>
+        <span id="status-label">View only</span>
+      </div>
+      <button class="btn btn-ghost" id="edit-toggle-btn" onclick="toggleEditMode()">🔒 Edit Mode</button>
+      <button class="btn btn-primary" id="add-btn" style="display:none" onclick="openAddModal()">＋ Add Question</button>
+    </div>
+  </div>
+
+  <!-- Category pills -->
+  <div class="cat-bar" id="cat-bar">
+    <button class="cat-pill active" data-cat="all" onclick="filterCat(this)">All</button>
+  </div>
+
+  <!-- Count -->
+  <div class="count-badge" id="count-badge"></div>
+
+  <!-- FAQ list -->
+  <div id="faq-list"></div>
+  <div id="no-results">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <p>No questions match your search.</p>
+  </div>
+
+</div>
+
+<!-- Footer -->
+<footer>AMS · Missoula, MT · Confidential Internal Reference</footer>
+
+<!-- Password Modal -->
+<div class="modal-overlay" id="pw-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('pw-modal')">✕</button>
+    <h2>Edit Access</h2>
+    <p>Enter the editor password to unlock edit mode.</p>
+    <label>Password</label>
+    <input type="password" id="pw-input" placeholder="••••••••••" onkeydown="if(event.key==='Enter')checkPassword()">
+    <div class="error-msg" id="pw-error">Incorrect password. Please try again.</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('pw-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="checkPassword()">Unlock</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add/Edit Question Modal -->
+<div class="modal-overlay" id="add-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('add-modal')">✕</button>
+    <h2 id="add-modal-title">Add New Question</h2>
+    <p id="add-modal-sub">New entry will appear in the FAQ list immediately.</p>
+    <label>Category</label>
+    <input type="text" id="new-cat" placeholder="e.g. Process Safety, Equipment, HR…" list="cat-datalist">
+    <datalist id="cat-datalist"></datalist>
+    <label>Question</label>
+    <input type="text" id="new-q" placeholder="Enter the question…">
+    <label>Answer</label>
+    <textarea id="new-a" placeholder="Enter the answer…"></textarea>
+    <input type="hidden" id="editing-index" value="">
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('add-modal')">Cancel</button>
+      <button class="btn btn-primary" id="save-btn" onclick="saveQuestion()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Delete confirm modal -->
+<div class="modal-overlay" id="del-modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('del-modal')">✕</button>
+    <h2>Delete Question?</h2>
+    <p id="del-q-preview" style="color:#e57a6e;font-style:italic;margin-bottom:22px;font-size:0.9rem;"></p>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeModal('del-modal')">Cancel</button>
+      <button class="btn btn-danger" id="del-confirm-btn">Delete</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ─────────────────────────────────────────────
+   DATA STORE
+   All entries are stored in localStorage so
+   they persist across page loads within the
+   same browser session / embedded iframe.
+───────────────────────────────────────────── */
+const STORAGE_KEY = 'ams_faq_data';
+const PASS_HASH   = 'AMS2026Pass'; // plain comparison (no server)
+
+const DEFAULT_DATA = [
+  {
+    cat: "Process Safety",
+    q: "What is the procedure for handling pyrophoric chemicals such as trimethylgallium (TMGa)?",
+    a: "All pyrophoric materials must be handled under inert atmosphere (N₂ or Ar) using Schlenk technique or inside a certified glove box. PHA/HAZOP documentation must be reviewed before first use. Refer to the chemical-specific SDS and the site EHS manual for PPE requirements, emergency procedures, and storage constraints. TMGa (CAS 1445-79-0) is GHS Category 1 Pyrophoric Liquid — NFPA 704: H3 F4 R2."
+  },
+  {
+    cat: "Process Safety",
+    q: "Where can I find the current NFPA 704 ratings for chemicals in our inventory?",
+    a: "NFPA 704 ratings are documented in each chemical's SDS (Section 14/GHS) and in the AMS Chemical Inventory SharePoint library. All hazardous chemicals are tagged with IUPAC name, CAS number, and NFPA diamond on the storage labels. If a rating is missing or unclear, contact the EHS lead before use."
+  },
+  {
+    cat: "Engineering Standards",
+    q: "Which edition of ASME B31.3 are we currently referencing for process piping design?",
+    a: "AMS defaults to ASME B31.3-2022 for all process piping deliverables unless the client specifies an earlier edition in the contract. Always cite the edition in the design basis document and drawing title block. Deviations must be logged in the project deviation register."
+  },
+  {
+    cat: "Engineering Standards",
+    q: "What correlation do we use for pipe friction factor calculations?",
+    a: "The Chen equation is our default for friction factor in turbulent flow. K-values for fittings and valves are taken from Crane TP-410 unless client specifications require otherwise. Intermediate calculation precision should be maintained at full precision; report final results to 3 significant figures for engineering estimates."
+  },
+  {
+    cat: "Project Administration",
+    q: "What is the correct project code format for new projects?",
+    a: "Project codes follow the format YYYYCCC## — four-digit year, three-letter client abbreviation, two-digit sequence number. Example: 2025SLM01. All engineering deliverables must include the project code in the title block, along with title, revision number, date, and author placeholder."
+  },
+  {
+    cat: "Project Administration",
+    q: "What metadata fields are required when uploading documents to the SharePoint project library?",
+    a: "Required SharePoint metadata fields are: Document Purpose, Abstract, and Discipline. Ensure these are populated before checking in any document to the project library. Failure to populate these fields may prevent the document from appearing in filtered views used by PMs and QA."
+  },
+  {
+    cat: "Data & Reporting",
+    q: "How should I distinguish between measured, calculated, and estimated values in reports?",
+    a: "AMS data integrity policy requires explicit labeling of value types. Use footnotes or in-line notation:\n• Measured (M) — from instrument or lab data\n• Calculated (C) — derived from equations, state fully\n• Correlation-derived (CR) — from published correlations, cite source\n• Estimated (E) — engineering judgment, state the basis\nEstimated values must include the estimation basis. Do not present estimated figures without qualification. Preferred primary sources: NIST WebBook, peer-reviewed literature, manufacturer SDS/TDS, ASTM/ISO standards."
+  },
+  {
+    cat: "Data & Reporting",
+    q: "What significant figure conventions apply to AMS deliverables?",
+    a: "Use 3 significant figures for engineering estimates, 4 or more for analytical data. Intermediate calculation steps should retain full precision and only be rounded at the final reported result. When working with US vendor specs in imperial units, retain originals and provide SI conversions alongside."
+  },
+  {
+    cat: "Confidentiality",
+    q: "How should client information be handled in shared or externally-distributed documents?",
+    a: "Client-specific information (project names, designs, pricing, contract terms) is confidential. Do not include client identifiers in externally-shared content unless explicitly directed by the project manager. When excerpting client documents, flag any NDA-protected content and do not reproduce proprietary diagrams, formulations, or specifications verbatim."
+  }
+];
+
+function loadData() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch(e) {}
+  return JSON.parse(JSON.stringify(DEFAULT_DATA));
+}
+
+function saveData(data) {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
+}
+
+let faqData    = loadData();
+let editMode   = false;
+let activecat  = 'all';
+let delIndex   = null;
+
+/* ─── Render ─── */
+function getCategories() {
+  return [...new Set(faqData.map(f => f.cat))].sort();
+}
+
+function renderCatBar() {
+  const bar = document.getElementById('cat-bar');
+  const cats = getCategories();
+  const dl = document.getElementById('cat-datalist');
+  bar.innerHTML = '';
+  dl.innerHTML = '';
+  const all = document.createElement('button');
+  all.className = 'cat-pill' + (activecat === 'all' ? ' active' : '');
+  all.dataset.cat = 'all';
+  all.textContent = 'All';
+  all.onclick = function() { filterCat(this); };
+  bar.appendChild(all);
+  cats.forEach(c => {
+    const b = document.createElement('button');
+    b.className = 'cat-pill' + (activecat === c ? ' active' : '');
+    b.dataset.cat = c;
+    b.textContent = c;
+    b.onclick = function() { filterCat(this); };
+    bar.appendChild(b);
+    const opt = document.createElement('option');
+    opt.value = c;
+    dl.appendChild(opt);
+  });
+}
+
+function renderList() {
+  const list  = document.getElementById('faq-list');
+  const query = document.getElementById('search-input').value.toLowerCase();
+  list.innerHTML = '';
+  let shown = 0;
+
+  faqData.forEach((item, idx) => {
+    const catMatch  = activecat === 'all' || item.cat === activecat;
+    const textMatch = !query ||
+      item.q.toLowerCase().includes(query) ||
+      item.a.toLowerCase().includes(query) ||
+      item.cat.toLowerCase().includes(query);
+
+    const div = document.createElement('div');
+    div.className = 'faq-item' + (editMode ? ' edit-mode' : '');
+    div.dataset.idx = idx;
+    div.style.animationDelay = (shown * 0.04) + 's';
+
+    if (!catMatch || !textMatch) { div.classList.add('hidden'); }
+    else { shown++; }
+
+    div.innerHTML = `
+      <button class="faq-q" onclick="toggleItem(this)">
+        <span class="q-icon">Q</span>
+        <span class="q-text">${escHtml(item.q)}</span>
+        <span class="q-cat">${escHtml(item.cat)}</span>
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">
+        <div class="faq-a-inner">${formatAnswer(item.a)}</div>
+      </div>
+      ${editMode ? `
+      <div class="item-edit-bar">
+        <button class="btn btn-ghost" style="font-size:0.8rem;padding:6px 12px" onclick="openEditModal(${idx})">✏️ Edit</button>
+        <button class="btn btn-danger" style="font-size:0.8rem;padding:6px 12px" onclick="confirmDelete(${idx})">🗑 Delete</button>
+      </div>` : ''}
+    `;
+    list.appendChild(div);
+  });
+
+  document.getElementById('no-results').style.display = shown === 0 ? 'block' : 'none';
+  document.getElementById('count-badge').textContent = `${shown} of ${faqData.length} question${faqData.length !== 1 ? 's' : ''}`;
+}
+
+function formatAnswer(text) {
+  return escHtml(text).replace(/\n/g, '<br>');
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function render() {
+  renderCatBar();
+  renderList();
+}
+
+/* ─── Accordion ─── */
+function toggleItem(btn) {
+  const item = btn.closest('.faq-item');
+  const wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+  if (!wasOpen) item.classList.add('open');
+}
+
+/* ─── Filter ─── */
+function filterFAQ() { renderList(); }
+
+function filterCat(el) {
+  document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  activecat = el.dataset.cat;
+  renderList();
+}
+
+/* ─── Edit Mode ─── */
+function toggleEditMode() {
+  if (!editMode) {
+    openModal('pw-modal');
+    document.getElementById('pw-input').focus();
+  } else {
+    exitEditMode();
+  }
+}
+
+function checkPassword() {
+  const val = document.getElementById('pw-input').value;
+  if (val === PASS_HASH) {
+    closeModal('pw-modal');
+    document.getElementById('pw-input').value = '';
+    document.getElementById('pw-error').classList.remove('show');
+    enterEditMode();
+  } else {
+    document.getElementById('pw-error').classList.add('show');
+    document.getElementById('pw-input').select();
+  }
+}
+
+function enterEditMode() {
+  editMode = true;
+  document.getElementById('edit-toggle-btn').textContent = '🔓 Exit Edit';
+  document.getElementById('edit-toggle-btn').classList.replace('btn-ghost', 'btn-success');
+  document.getElementById('add-btn').style.display = 'inline-flex';
+  document.getElementById('status-dot').classList.add('active');
+  document.getElementById('status-label').textContent = 'Edit mode';
+  render();
+}
+
+function exitEditMode() {
+  editMode = false;
+  document.getElementById('edit-toggle-btn').textContent = '🔒 Edit Mode';
+  document.getElementById('edit-toggle-btn').classList.replace('btn-success', 'btn-ghost');
+  document.getElementById('add-btn').style.display = 'none';
+  document.getElementById('status-dot').classList.remove('active');
+  document.getElementById('status-label').textContent = 'View only';
+  render();
+}
+
+/* ─── Add / Edit ─── */
+function openAddModal() {
+  document.getElementById('add-modal-title').textContent = 'Add New Question';
+  document.getElementById('add-modal-sub').textContent = 'New entry will appear in the FAQ list immediately.';
+  document.getElementById('new-cat').value = '';
+  document.getElementById('new-q').value = '';
+  document.getElementById('new-a').value = '';
+  document.getElementById('editing-index').value = '';
+  document.getElementById('save-btn').textContent = 'Save';
+  openModal('add-modal');
+  document.getElementById('new-cat').focus();
+}
+
+function openEditModal(idx) {
+  const item = faqData[idx];
+  document.getElementById('add-modal-title').textContent = 'Edit Question';
+  document.getElementById('add-modal-sub').textContent = 'Changes save immediately.';
+  document.getElementById('new-cat').value = item.cat;
+  document.getElementById('new-q').value = item.q;
+  document.getElementById('new-a').value = item.a;
+  document.getElementById('editing-index').value = idx;
+  document.getElementById('save-btn').textContent = 'Update';
+  openModal('add-modal');
+}
+
+function saveQuestion() {
+  const cat = document.getElementById('new-cat').value.trim();
+  const q   = document.getElementById('new-q').value.trim();
+  const a   = document.getElementById('new-a').value.trim();
+  if (!cat || !q || !a) { alert('All fields are required.'); return; }
+
+  const editIdx = document.getElementById('editing-index').value;
+  if (editIdx !== '') {
+    faqData[parseInt(editIdx)] = { cat, q, a };
+  } else {
+    faqData.push({ cat, q, a });
+  }
+  saveData(faqData);
+  closeModal('add-modal');
+  render();
+}
+
+/* ─── Delete ─── */
+function confirmDelete(idx) {
+  delIndex = idx;
+  document.getElementById('del-q-preview').textContent = '"' + faqData[idx].q + '"';
+  document.getElementById('del-confirm-btn').onclick = function() { deleteQuestion(delIndex); };
+  openModal('del-modal');
+}
+
+function deleteQuestion(idx) {
+  faqData.splice(idx, 1);
+  saveData(faqData);
+  closeModal('del-modal');
+  render();
+}
+
+/* ─── Modal helpers ─── */
+function openModal(id) {
+  document.getElementById(id).classList.add('active');
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+}
+
+// Close modals on overlay click
+document.querySelectorAll('.modal-overlay').forEach(ov => {
+  ov.addEventListener('click', e => {
+    if (e.target === ov) closeModal(ov.id);
+  });
+});
+
+// ESC key
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
+  }
+});
+
+/* ─── Init ─── */
+render();
+</script>
+</body>
+</html>
