@@ -278,50 +278,35 @@
 ============================================================= */
 const FAQ_DATA = [
   {
-    cat: "Process Safety",
-    q: "What is the procedure for handling pyrophoric chemicals such as trimethylgallium (TMGa)?",
-    a: "All pyrophoric materials must be handled under inert atmosphere (N\u2082 or Ar) using Schlenk technique or inside a certified glove box. PHA/HAZOP documentation must be reviewed before first use. Refer to the chemical-specific SDS and the site EHS manual for PPE requirements, emergency procedures, and storage constraints. TMGa (CAS 1445-79-0) is GHS Category 1 Pyrophoric Liquid \u2014 NFPA 704: H3 F4 R2."
+    cat: "Getting Started",
+    q: "How do I get access to a SharePoint Site or File?",
+    a: "Request access to a named site via formal request to site owner. [insert image of requesting site permissions] Or, email ferraro@silicongases.com for permissions directly, as requests can go unseen. Similarly with folders, follow the same steps. [Insert image of requesting folder permissions]"
   },
   {
-    cat: "Process Safety",
-    q: "Where can I find the current NFPA 704 ratings for chemicals in our inventory?",
-    a: "NFPA 704 ratings are documented in each chemical\u2019s SDS (Section 14/GHS) and in the AMS Chemical Inventory SharePoint library. All hazardous chemicals are tagged with IUPAC name, CAS number, and NFPA diamond on the storage labels. If a rating is missing or unclear, contact the EHS lead before use."
+    cat: "Getting Started",
+    q: "Where can I find the IT Employee Handbook?",
+    a: "On this site, click on the attached link next to 'IT Resources'. Alternatively, access Hub Documents under the 'Documents' tab on the toolbar at the top of the screen, where you can find it within the 'Handbooks and SOP's' file."
   },
   {
-    cat: "Engineering Standards",
-    q: "Which edition of ASME B31.3 are we currently referencing for process piping design?",
-    a: "AMS defaults to ASME B31.3-2022 for all process piping deliverables unless the client specifies an earlier edition in the contract. Always cite the edition in the design basis document and drawing title block. Deviations must be logged in the project deviation register."
+    cat: "Getting Started",
+    q: "How do I manage Multifactor Authentication - Including Setup?",
+    a: "Download the Microsoft Multifactor Authentication app on your mobile device's app store [insert image of app]. Signing in for the first time, you'll be prompted to scan a QR code to register device [insert screen and internal app to add device]. If you need to reset your MFA, please email your current IT to revoke the past registery. For any confusion, please reference 'MFA Setup' word document in 'Handbooks and SOP's' under Hub Documents"
   },
   {
-    cat: "Engineering Standards",
-    q: "What correlation do we use for pipe friction factor calculations?",
-    a: "The Chen equation is our default for friction factor in turbulent flow. K-values for fittings and valves are taken from Crane TP-410 unless client specifications require otherwise. Intermediate calculation precision should be maintained at full precision; report final results to 3 significant figures for engineering estimates."
+    cat: "Getting Started",
+    q: "How do I Sync Sharepoint Files to my Computer?",
+    a: "Go to the repository you want to sync (either a file or documents of the whole page) and find the sync icon on the top right. If it doesn't appear, try expanding options with the three dots [insert two images - sync and dots]. Then, check your devices files. You should see advmatsolutions appear just above 'My PC', where your synced files will follow. If you don't see anything in your files right away - don't be spooked! Sometimes big data takes a longer time to sync."
   },
   {
-    cat: "Project Administration",
-    q: "What is the correct project code format for new projects?",
-    a: "Project codes follow the format YYYYCCC## \u2014 four-digit year, three-letter client abbreviation, two-digit sequence number. Example: 2025SLM01. All engineering deliverables must include the project code in the title block, along with title, revision number, date, and author placeholder."
+    cat: "Access & Permissions",
+    q: "How do I reset my Password?",
+    a: "It's important to cycle through passwords for your own security, and that of the company's. It's reccomended a reset at least once a year. To reset, go to this page: https://myaccount.microsoft.com/. If you are unable to reset your password, please contact current IT to manually reset."
   },
   {
-    cat: "Project Administration",
-    q: "What metadata fields are required when uploading documents to the SharePoint project library?",
-    a: "Required SharePoint metadata fields are: Document Purpose, Abstract, and Discipline. Ensure these are populated before checking in any document to the project library. Failure to populate these fields may prevent the document from appearing in filtered views used by PMs and QA."
+    cat: "Access & Permissions",
+    q: "I requested access, but haven't heard back or am having issues reaching the site - what do I do?",
+    a: "If you've not heard back about updating site permissions, or have but are experiencing issues - please put in a formal ticket with support@technellogic.com"
   },
-  {
-    cat: "Data & Reporting",
-    q: "How should I distinguish between measured, calculated, and estimated values in reports?",
-    a: "AMS data integrity policy requires explicit labeling of value types. Use footnotes or in-line notation:\n\u2022 Measured (M) \u2014 from instrument or lab data\n\u2022 Calculated (C) \u2014 derived from equations; state governing equation\n\u2022 Correlation-derived (CR) \u2014 from published correlations; cite source\n\u2022 Estimated (E) \u2014 engineering judgment; state the basis\nEstimated values must include the estimation basis. Preferred primary sources: NIST WebBook, peer-reviewed literature, manufacturer SDS/TDS, ASTM/ISO standards."
-  },
-  {
-    cat: "Data & Reporting",
-    q: "What significant figure conventions apply to AMS deliverables?",
-    a: "Use 3 significant figures for engineering estimates, 4 or more for analytical data. Intermediate calculation steps should retain full precision and only be rounded at the final reported result. When working with US vendor specs in imperial units, retain originals and provide SI conversions alongside."
-  },
-  {
-    cat: "Confidentiality",
-    q: "How should client information be handled in shared or externally-distributed documents?",
-    a: "Client-specific information (project names, designs, pricing, contract terms) is confidential. Do not include client identifiers in externally-shared content unless explicitly directed by the project manager. When excerpting client documents, flag NDA-protected content and do not reproduce proprietary diagrams, formulations, or specifications verbatim."
-  }
 ];
 /* ===================== END EDIT BLOCK ===================== */
 
